@@ -1,0 +1,83 @@
+* { margin: 0; padding: 0;}
+@fontSize_24: 24px;
+@color: #ffffff;
+@nice_blue: #5B83AD;
+@light-blue: @nice_blue + #111;
+@w: 100%;
+
+h1 { color: @color; background: @light-blue; width: @w; .borderd; .center; .border-radius();}
+
+.borderd { border-top: 1px dotted #000000; border-bottom: 2px solid #000000;}
+.center { text-align: center;}
+
+.border-radius(@radius: 20px) { border-radius: @radius; -moz-border-radius: @radius; -webkit-border-radius: @radius;}
+
+.mixin(@color) { color: @color;}
+.mixin(@color; @padding:2px) { color: @color; padding: @padding;}
+.mixin(@color; @padding; @margin:4px) { color: @color; padding: @padding; margin: @margin @margin @margin @margin;}
+.blue { .mixin(blue);}
+
+//@arguments 包含了所有传进去的参数
+.box-shadow(@x: 0, @y: 0, @blur: 1px, @color: #000) { box-shadow: @arguments; -moz-box-shadow: @arguments; -webkit-box-shadow: @arguments;}
+
+.div1 { .blue; font-size: @fontSize_24; .box-shadow(2px, 5px); background: @nice_blue;}
+
+//模式匹配 通过@swtich控制.mixin2  @_表示匹配一切
+.mixin2(dark, @color) { color: darken(@color, 10%);}
+.mixin2(light, @color) { color: lighten(@color, 10%);}
+.mixin2(@_, @color) { display: block;}
+@switch: light;
+
+.div2 { .mixin2(@switch, #888);}
+
+//嵌套规则  &表示元素自身 用于串联
+.div3 { height: 30px; font-size: @fontSize_24; background: #ccc;
+  a {
+    color: #0000ed;
+    &:hover { color: #f00;}
+  }
+}
+
+a { color: #000;
+  .div3 & { color: green;}
+}
+
+//运算 应该包含在括号内
+@height_30: 30px;
+.div4 { height: @height_30; width: (@height_30 * 10); background: #ccc; line-height: @height_30; margin-top: (@height_30 / 2); padding-left: (@height_30 / 3);}
+
+//命名空间
+#zone {
+  .button { display: block; color: grey; background: #ccc;
+    &:hover { background: #0000ed; color: #fff;}
+  }
+  .border { border: 1px solid #f00;}
+}
+.btn { #zone > .button; #zone > .border;}
+
+//字符串插值 @{name} 将变量插入字符串中
+//@base-url: "http://assets.fnord.com";
+//.btn {background-image: url("@{base-url}/images/bg.png")};
+
+//选择器插值 @{selector}
+@name: red;
+.@{name} { color: #f00;}
+.btn { .red; background-image: url(escape("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"));}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
