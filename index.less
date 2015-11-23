@@ -60,13 +60,16 @@ a { color: #000;
 //.btn {background-image: url("@{base-url}/images/bg.png")};
 
 //选择器插值 @{selector}
-@name: red;
+/*@name: red;
 .@{name} { color: #f00;}
-.btn { .red; background-image: url(escape("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"));}
+.btn { .red; background-image: url(escape("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"));}*/
 
 
 
+//测试
+.o(@a:50){ opacity: (@a / 100); filter:alpha(opacity=@a);}
 
+#div5 { width: 200px; height: 200px; background: #000; .o(); }
 
 
 

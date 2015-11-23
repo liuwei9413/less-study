@@ -84,13 +84,13 @@ a {
   background: #0000ed;
   color: #fff;
 }
-.btn {
-  background-image: url("http://assets.fnord.com/images/bg.png");
-}
-.red {
-  color: #f00;
-}
-.btn {
-  color: #f00;
-  background-image: url("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png");
+/*@name: red;
+.@{name} { color: #f00;}
+.btn { .red; background-image: url(escape("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"));}*/
+#div5 {
+  width: 200px;
+  height: 200px;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
